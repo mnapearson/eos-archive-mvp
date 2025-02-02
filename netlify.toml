@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Uncomment below if you're using Netlify Functions later
+#[functions]
+#  directory = "netlify/functions"
