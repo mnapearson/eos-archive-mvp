@@ -4,27 +4,22 @@ import { notFound } from 'next/navigation';
 import { Event } from '@/types';
 
 // For static generation, pre-render pages based on our sample events.
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return events.map((event: Event) => ({
     id: event.id,
   }));
 }
 
-// Define the props type for the page
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-// The page component receives route parameters through the 'params' prop.
-export default async function EventDetail({ params }: PageProps) {
-  // Find the event matching the dynamic id from our sample data.
+// Define the props inline; this should match the inferred type from generateStaticParams.
+export default async function EventDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   const event = (events as Event[]).find((e) => e.id === params.id);
 
-  // If the event is not found, trigger a 404.
   if (!event) {
-    return notFound();
+    notFound();
   }
 
   return (
