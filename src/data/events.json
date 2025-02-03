@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Art Show",
+    "description": "A curated art show in Leipzig featuring local artists.",
+    "date": "2025-02-05",
+    "location": {
+      "name": "Spinnerei",
+      "address": "123 Main St",
+      "city": "Leipzig",
+      "country": "Germany"
+    },
+    "imageUrl": "https://tillmans.co.uk/images/stories/misc/2017_Bundestagswahl/instagram/Bundestagswahl2017-Instagram-01.jpg",
+    "category": "Exhibition",
+    "tags": ["art", "exhibition", "culture"]
+  },
+  {
+    "id": "2",
+    "title": "Live Music Night",
+    "description": "Enjoy an evening of live music at a popular local bar.",
+    "date": "2025-02-10",
+    "location": {
+      "name": "Honey Lou Bar",
+      "address": "456 Side St",
+      "city": "Berlin",
+      "country": "Germany"
+    },
+    "imageUrl": "https://tillmans.co.uk/images/stories/misc/2017_Bundestagswahl/instagram/Bundestagswahl2017-Instagram-07.jpg",
+    "category": "Music",
+    "tags": ["music", "live", "bar"]
+  }
+]
