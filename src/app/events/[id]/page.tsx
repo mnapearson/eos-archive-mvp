@@ -3,23 +3,28 @@ import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
 import type { Event } from '@/types';
 
-// generateStaticParams returns a plain array of parameter objects.
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-// Define the component props inline.
-export default function EventDetail({
+interface PageProps {
+  params: { id: string } | Promise<{ id: string }>;
+}
+
+export default async function EventDetail({
   params,
-}: {
-  params: { id: string };
-}): React.ReactElement {
-  const event = (events as Event[]).find((e) => e.id === params.id);
+}: PageProps): Promise<React.ReactElement> {
+  // This ensures that resolvedParams is of type { id: string }
+  const resolvedParams = await Promise.resolve(params);
+  const { id } = resolvedParams;
+
+  const event = (events as Event[]).find((e) => e.id === id);
   if (!event) {
     notFound();
   }
+
   return (
     <main className='p-8'>
       <h1 className='text-4xl font-bold mb-4'>{event.title}</h1>
