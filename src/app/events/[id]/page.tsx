@@ -33,7 +33,7 @@ export default async function EventDetail({
   return (
     <main className='p-8'>
       <h1 className='text-4xl font-bold mb-4'>{event.title}</h1>
-      <p className='text-gray-600 mb-4'>
+      <p className='mb-4'>
         {event.date} - {event.location.name}, {event.location.city}
       </p>
       <img

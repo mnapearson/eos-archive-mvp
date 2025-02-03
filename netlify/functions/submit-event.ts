@@ -26,7 +26,7 @@ export const handler: Handler = async (event, context) => {
       data;
 
     // Validate required fields
-    if (!title || !date || !location || !location.city) {
+    if (!title || !date || !location || !location.city || !imageUrl) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Missing required fields' }),
@@ -39,7 +39,8 @@ export const handler: Handler = async (event, context) => {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          error: 'No channel mapping found for this city',
+          error:
+            'No channel mapping found for this city, please reach out at hello@eosarchive.app and we will create that for you.',
         }),
       };
     }
@@ -48,10 +49,11 @@ export const handler: Handler = async (event, context) => {
     // Adjust the payload structure as per are.na’s API documentation.
     const blockData = {
       title,
+      description: `$Date: ${date}`,
       content: `${description}\n\nDate: ${date}\nCategory: ${category}\nTags: ${tags.join(
         ', '
       )}`,
-      // Optionally, if are.na supports image uploads via URL, you could include imageUrl here.
+      imageUrl,
     };
 
     // Send the POST request to the are.na API
