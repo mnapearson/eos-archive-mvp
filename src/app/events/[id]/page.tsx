@@ -1,31 +1,25 @@
-// src/app/events/[id]/page.tsx
-
 import React from 'react';
 import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
 import type { Event } from '@/types';
 
-// generateStaticParams returns an array of plain objects
+// generateStaticParams returns a plain array of parameter objects.
 export function generateStaticParams() {
   return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-interface PageProps {
-  params: any; // Temporarily bypass type errors
-}
-
-export default async function EventDetail({
+// Define the component props inline.
+export default function EventDetail({
   params,
-}: PageProps): Promise<React.ReactElement> {
-  const { id } = params;
-  const event = (events as Event[]).find((e) => e.id === id);
-
+}: {
+  params: { id: string };
+}): React.ReactElement {
+  const event = (events as Event[]).find((e) => e.id === params.id);
   if (!event) {
     notFound();
   }
-
   return (
     <main className='p-8'>
       <h1 className='text-4xl font-bold mb-4'>{event.title}</h1>
