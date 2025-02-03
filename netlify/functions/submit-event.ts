@@ -57,7 +57,7 @@ export const handler: Handler = async (event, context) => {
     // Adjust the payload structure as per are.na’s API documentation.
     const blockData = {
       title,
-      description: `${date} @ ${time} @ ${location}`,
+      description: `${date} @ ${time} @ ${location.name} `,
       content: `${description}\n\nDate: ${date} @ ${time}\nCategory: ${category}\nTags: ${tags.join(
         ', '
       )}\n\n[Event Art](${imageUrl})`,
