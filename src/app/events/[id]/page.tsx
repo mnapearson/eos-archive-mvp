@@ -10,10 +10,17 @@ export async function generateStaticParams() {
   }));
 }
 
+// Define the props type for the page
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
 // The page component receives route parameters through the 'params' prop.
-export default function EventDetail({ params }: { params: { id: string } }) {
+export default async function EventDetail({ params }: PageProps) {
   // Find the event matching the dynamic id from our sample data.
-  const event = events.find((e: Event) => e.id === params.id);
+  const event = (events as Event[]).find((e) => e.id === params.id);
 
   // If the event is not found, trigger a 404.
   if (!event) {
