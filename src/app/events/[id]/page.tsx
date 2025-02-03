@@ -1,27 +1,24 @@
-// src/app/events/[id]/page.tsx
-import React, { ReactElement } from 'react';
+import React from 'react';
 import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
-import { Event } from '@/types';
+import type { Event } from '@/types';
 
-// Remove async if not needed for generateStaticParams:
+// You can leave generateStaticParams as synchronous
 export function generateStaticParams() {
   return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-// Define an interface for the props:
+// Define an interface for props
 interface PageProps {
   params: {
     id: string;
   };
 }
 
-// Explicitly type the function parameter:
-export default async function EventDetail({
-  params,
-}: PageProps): Promise<ReactElement> {
+// Remove the async keyword if you're not performing async operations
+export default function EventDetail({ params }: PageProps): React.ReactElement {
   const event = (events as Event[]).find((e) => e.id === params.id);
 
   if (!event) {
@@ -34,13 +31,11 @@ export default async function EventDetail({
       <p className='text-gray-600 mb-4'>
         {event.date} - {event.location.name}, {event.location.city}
       </p>
-      <div className='w-full aspect-[16/16]'>
-        <img
-          src={event.imageUrl}
-          alt={event.title}
-          className='w-full h-full object-contain'
-        />
-      </div>
+      <img
+        src={event.imageUrl}
+        alt={event.title}
+        className='w-full h-64 object-cover rounded mb-4'
+      />
       <p className='text-lg'>{event.description}</p>
       <div className='mt-4'>
         <p>
