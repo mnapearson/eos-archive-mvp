@@ -7,7 +7,9 @@ export default function HomePage() {
 
   return (
     <main className='p-8 bg-gray-100 min-h-screen'>
-      <h1 className='text-4xl font-bold mb-6 text-center'>Upcoming Events</h1>
+      <h1 className='text-4xl font-bold mb-6 text-center'>
+        <Link href={`/submit/`}>Submit Event</Link>
+      </h1>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {eventList.map((event) => (
           <div
