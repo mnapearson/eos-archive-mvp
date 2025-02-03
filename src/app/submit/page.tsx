@@ -7,6 +7,7 @@ export default function SubmitEventPage() {
     title: '',
     description: '',
     date: '',
+    time: '',
     location: { name: '', city: '', address: '', country: '' },
     imageUrl: '',
     category: '',
@@ -87,6 +88,17 @@ export default function SubmitEventPage() {
             type='date'
             name='date'
             value={formData.date}
+            onChange={handleChange}
+            className='w-full border border-gray-300 rounded px-3 py-2'
+            required
+          />
+        </div>
+        <div className='mb-4'>
+          <label className='block font-semibold mb-1'>Time</label>
+          <input
+            type='time'
+            name='time'
+            value={formData.time}
             onChange={handleChange}
             className='w-full border border-gray-300 rounded px-3 py-2'
             required

@@ -1,6 +1,7 @@
 // netlify/functions/submit-event.ts
 
 import { Handler } from '@netlify/functions';
+import { time } from 'console';
 
 // Mapping from city to are.na channel IDs (replace with your actual channel IDs)
 const cityChannels: { [key: string]: string } = {
@@ -49,8 +50,8 @@ export const handler: Handler = async (event, context) => {
     // Adjust the payload structure as per are.na’s API documentation.
     const blockData = {
       title,
-      description: `$Date: ${date}`,
-      content: `${description}\n\nDate: ${date}\nCategory: ${category}\nTags: ${tags.join(
+      description: `${date} @ ${time} @ ${location}`,
+      content: `${description}\n\nDate: ${date} @ ${time}\nCategory: ${category}\nTags: ${tags.join(
         ', '
       )}`,
       imageUrl,
