@@ -10,6 +10,9 @@ export default function HomePage() {
       <h1 className='text-4xl font-bold mb-6 text-center'>
         <Link href={`/submit/`}>Submit Event</Link>
       </h1>
+      <h1 className='text-4xl font-bold mb-6 text-center'>
+        <Link href={`/signup/`}>Sign Up</Link>
+      </h1>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {eventList.map((event) => (
           <div
