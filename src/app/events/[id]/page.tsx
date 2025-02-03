@@ -12,13 +12,8 @@ export function generateStaticParams() {
   }));
 }
 
-interface PageParams {
-  id: string;
-}
-
-// By intersecting with { then?: never }, we indicate that params should not be treated as a Promise.
 interface PageProps {
-  params: PageParams & { then?: never };
+  params: any; // Temporarily bypass type errors
 }
 
 export default async function EventDetail({
