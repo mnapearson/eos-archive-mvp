@@ -1,25 +1,31 @@
+// src/app/events/[id]/page.tsx
+
 import React from 'react';
 import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
 import type { Event } from '@/types';
 
-// You can leave generateStaticParams as synchronous
+// generateStaticParams returns an array of plain objects
 export function generateStaticParams() {
   return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-// Define an interface for props
-interface PageProps {
-  params: {
-    id: string;
-  };
+interface PageParams {
+  id: string;
 }
 
-// Remove the async keyword if you're not performing async operations
-export default function EventDetail({ params }: PageProps): React.ReactElement {
-  const event = (events as Event[]).find((e) => e.id === params.id);
+// By intersecting with { then?: never }, we indicate that params should not be treated as a Promise.
+interface PageProps {
+  params: PageParams & { then?: never };
+}
+
+export default async function EventDetail({
+  params,
+}: PageProps): Promise<React.ReactElement> {
+  const { id } = params;
+  const event = (events as Event[]).find((e) => e.id === id);
 
   if (!event) {
     notFound();
