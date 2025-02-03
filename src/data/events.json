@@ -4,6 +4,7 @@
     "title": "Art Show",
     "description": "A curated art show in Leipzig featuring local artists.",
     "date": "2025-02-05",
+    "time": "12.00",
     "location": {
       "name": "Spinnerei",
       "address": "123 Main St",
@@ -19,6 +20,7 @@
     "title": "Live Music Night",
     "description": "Enjoy an evening of live music at a popular local bar.",
     "date": "2025-02-10",
+    "time": "14.00",
     "location": {
       "name": "Honey Lou Bar",
       "address": "456 Side St",
