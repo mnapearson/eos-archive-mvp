@@ -5,22 +5,25 @@ import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
 import type { Event } from '@/types';
 
-// We keep generateStaticParams as async so it returns a Promise of an array.
+// Ensure generateStaticParams returns a Promise of an array of objects.
 export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-// Here, instead of trying to type the props to satisfy Next’s auto-generated type,
-// we override (assert) that params is what we expect.
+// Here, we explicitly indicate that the incoming props have a `params` property
+// that is a Promise resolving to our expected object.
+interface DynamicPageProps {
+  params: Promise<{ id: string }>;
+}
+
+// The page component is async so we can await the params.
 export default async function EventDetail({
   params,
-}: {
-  params: unknown;
-}): Promise<React.ReactElement> {
-  // Cast params to our expected shape.
-  const { id } = params as { id: string };
+}: DynamicPageProps): Promise<React.ReactElement> {
+  // Await the params so that we have a plain object.
+  const { id } = await params;
 
   const event = (events as Event[]).find((e) => e.id === id);
   if (!event) {
