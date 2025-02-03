@@ -1,21 +1,27 @@
 // src/app/events/[id]/page.tsx
+import React, { ReactElement } from 'react';
 import events from '@/data/events.json';
 import { notFound } from 'next/navigation';
 import { Event } from '@/types';
 
-// For static generation, pre-render pages based on our sample events.
+// Remove async if not needed for generateStaticParams:
 export function generateStaticParams() {
-  return events.map((event: Event) => ({
+  return (events as Event[]).map((event) => ({
     id: event.id,
   }));
 }
 
-// Define the props inline; this should match the inferred type from generateStaticParams.
+// Define an interface for the props:
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+// Explicitly type the function parameter:
 export default async function EventDetail({
   params,
-}: {
-  params: { id: string };
-}) {
+}: PageProps): Promise<ReactElement> {
   const event = (events as Event[]).find((e) => e.id === params.id);
 
   if (!event) {
