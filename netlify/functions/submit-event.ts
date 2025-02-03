@@ -1,7 +1,6 @@
 // netlify/functions/submit-event.ts
 
 import { Handler } from '@netlify/functions';
-import { time } from 'console';
 
 // Mapping from city to are.na channel IDs (replace with your actual channel IDs)
 const cityChannels: { [key: string]: string } = {
@@ -23,8 +22,16 @@ export const handler: Handler = async (event, context) => {
 
   try {
     const data = JSON.parse(event.body || '{}');
-    const { title, description, date, location, imageUrl, category, tags } =
-      data;
+    const {
+      title,
+      description,
+      date,
+      time,
+      location,
+      imageUrl,
+      category,
+      tags,
+    } = data;
 
     // Validate required fields
     if (!title || !date || !location || !location.city || !imageUrl) {
@@ -53,8 +60,7 @@ export const handler: Handler = async (event, context) => {
       description: `${date} @ ${time} @ ${location}`,
       content: `${description}\n\nDate: ${date} @ ${time}\nCategory: ${category}\nTags: ${tags.join(
         ', '
-      )}`,
-      imageUrl,
+      )}\n\n[Event Art](${imageUrl})`,
     };
 
     // Send the POST request to the are.na API

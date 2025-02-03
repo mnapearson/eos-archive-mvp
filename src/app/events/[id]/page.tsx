@@ -34,7 +34,8 @@ export default async function EventDetail({
     <main className='p-8'>
       <h1 className='text-4xl font-bold mb-4'>{event.title}</h1>
       <p className='mb-4'>
-        {event.date} - {event.location.name}, {event.location.city}
+        {event.date} @ {event.time} - {event.location.name},{' '}
+        {event.location.city}
       </p>
       <img
         src={event.imageUrl}

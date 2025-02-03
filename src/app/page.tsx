@@ -29,7 +29,8 @@ export default function HomePage() {
                   <Link href={`/events/${event.id}`}>{event.title}</Link>
                 </h2>
                 <p className='text-white'>
-                  {event.date} - {event.location.name}, {event.location.city}
+                  {event.date} @ {event.time} - {event.location.name},{' '}
+                  {event.location.city}
                 </p>
                 <p className='mt-2 text-white'>{event.description}</p>
                 <div className='mt-2 text-white'>
