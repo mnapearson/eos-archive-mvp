@@ -1,11 +1,11 @@
-// pages/leipzig.tsx
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import MapComponent, {
   fetchEventsFromChannel,
   EventData,
 } from '@/app/components/MapComponent';
-import EventList from '@/app/components/EventLIst';
+import EventList from '@/app/components/EventList';
 
 const LeipzigPage: React.FC = () => {
   // Replace with your actual are.na channel ID for Leipzig.
