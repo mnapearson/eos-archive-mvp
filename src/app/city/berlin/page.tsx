@@ -5,7 +5,7 @@ import MapComponent from '@/app/components/MapComponent';
 
 const BerlinPage: React.FC = () => {
   // Replace with your actual Berlin are.na channel ID.
-  const berlinChannelId = 'YOUR_BERLIN_CHANNEL_ID';
+  const berlinChannelId = 'berlin-k2d6mltcmcg';
   // Optionally, if your Berlin events have different default coordinates, update them:
   const berlinCenter: [number, number] = [13.405, 52.52];
 
