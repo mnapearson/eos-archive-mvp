@@ -48,6 +48,11 @@ export default function RootLayout({
                   berlin
                 </Link>
                 <Link
+                  href='/city/leipzig'
+                  className='underline'>
+                  leipzig
+                </Link>
+                <Link
                   href='/about'
                   className='hover:underline'>
                   about
