@@ -1,3 +1,4 @@
+// app/signup/page.tsx
 'use client';
 
 import { useEffect } from 'react';
@@ -13,15 +14,29 @@ export default function SignUpPage() {
   };
 
   return (
-    <main className='p-8 bg-gray-100 min-h-screen'>
-      <h1 className='text-4xl font-bold mb-6 text-center'>Sign Up / Log In</h1>
-      <div className='max-w-md mx-auto'>
+    <div className='flex items-center justify-center py-12 px-4'>
+      <div className='max-w-md w-full rounded-lg shadow p-8'>
+        <h1 className='text-3xl font-bold mb-6 text-center'>
+          Sign Up / Log In
+        </h1>
+        <p className='mb-8 text-center'>
+          Welcome! Please sign up or log in to continue.
+        </p>
         <button
           onClick={openWidget}
-          className='w-full bg-blue-600 text-white px-4 py-2 rounded'>
+          className='w-full px-4 py-2 rounded font-medium transition hover:opacity-90
+            bg-inherit text-inherit border border-current
+          '>
+          {/* 
+            Using the parent's text/border color.
+            If you prefer the button style from layout, 
+            you can add logic to detect theme or 
+            simply re-use the 'buttonClasses' concept 
+            from layout.
+          */}
           Sign Up / Log In
         </button>
       </div>
-    </main>
+    </div>
   );
 }

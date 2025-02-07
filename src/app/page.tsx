@@ -1,49 +1,61 @@
+// app/page.tsx
+'use client';
+
 import Link from 'next/link';
-import events from '@/data/events.json';
-import { Event } from '@/types';
+import events from '@/data/events.json'; // Example import; replace with your data source
+import type { Event } from '@/types'; // Replace with your own type definitions if needed
 
 export default function HomePage() {
-  const eventList = events as Event[];
-
   return (
-    <main className='p-8 bg-gray-100 min-h-screen'>
-      <h1 className='text-4xl font-bold mb-6 text-center'>
-        <Link href={`/submit/`}>Submit Event</Link>
-      </h1>
-      <h1 className='text-4xl font-bold mb-6 text-center'>
-        <Link href={`/signup/`}>Sign Up</Link>
-      </h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-        {eventList.map((event) => (
-          <div
-            key={event.id}
-            className='rounded overflow-hidden'>
-            <div className='relative group w-full aspect-[16/16]'>
-              <img
-                src={event.imageUrl}
-                alt={event.title}
-                className='w-full h-full object-contain'
-              />
-              <div className='absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-80 p-4'>
-                <h2 className='text-2xl font-semibold text-white'>
-                  <Link href={`/events/${event.id}`}>{event.title}</Link>
-                </h2>
-                <p className='text-white'>
-                  {event.date} @ {event.time} - {event.location.name},{' '}
-                  {event.location.city}
-                </p>
-                <p className='mt-2 text-white'>{event.description}</p>
-                <div className='mt-2 text-white'>
-                  <strong>Category:</strong> {event.category}
-                </div>
-                <div className='mt-2 text-white'>
-                  <strong>Tags:</strong> {event.tags.join(', ')}
+    <div className='px-4 py-12 max-w-6xl mx-auto'>
+      {/* Hero or Intro Section */}
+      <section className='mb-12'>
+        <h1 className='text-3xl md:text-4xl font-bold mb-4'>
+          Welcome to EOS Archive
+        </h1>
+        <p className='leading-relaxed'>
+          Your hub for subcultural events, flyers, and art. Feel free to
+          explore, or{' '}
+          <Link
+            href='/submit'
+            className='underline'>
+            submit an event
+          </Link>{' '}
+          of your own.
+        </p>
+      </section>
+
+      {/* Example Grid of Upcoming Events */}
+      <section>
+        <h2 className='text-2xl md:text-3xl font-semibold mb-6'>
+          Upcoming Events
+        </h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
+          {(events as Event[])?.map((event) => (
+            <Link
+              key={event.id}
+              href={`/events/${event.id}`}>
+              <div className='rounded-lg shadow overflow-hidden cursor-pointer hover:shadow-md transition-shadow bg-inherit border border-current'>
+                {/* Event Image */}
+                {event.imageUrl && (
+                  <img
+                    src={event.imageUrl}
+                    alt={event.title}
+                    className='w-full h-48 object-cover'
+                  />
+                )}
+                {/* Event Info */}
+                <div className='p-4'>
+                  <h3 className='font-bold mb-1 line-clamp-2'>{event.title}</h3>
+                  <p className='text-sm opacity-80'>
+                    {event.date} • {event.location.city}
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </main>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

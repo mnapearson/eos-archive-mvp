@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  svg,
+  i {
+    color: currentColor;
+  }
+}
+
 :root {
   --background: #f5f1f0;
   --foreground: #342c2a;
