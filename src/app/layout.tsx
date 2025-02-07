@@ -43,6 +43,11 @@ export default function RootLayout({
               {/* Example nav links */}
               <nav className='hidden md:flex items-center space-x-4'>
                 <Link
+                  href='/city/berlin'
+                  className='underline'>
+                  berlin
+                </Link>
+                <Link
                   href='/about'
                   className='hover:underline'>
                   about

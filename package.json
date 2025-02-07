@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^3.0.0",
+    "mapbox-gl": "^3.9.4",
     "netlify-identity-widget": "^1.9.2",
     "next": "15.1.6",
     "react": "^19.0.0",
