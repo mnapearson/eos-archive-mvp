@@ -1,5 +1,3 @@
-// pages/berlin.tsx
-
 import React, { useEffect, useState } from 'react';
 import MapComponent, {
   fetchEventsFromChannel,

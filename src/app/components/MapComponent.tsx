@@ -1,4 +1,4 @@
-// components/MapComponent.tsx
+'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
@@ -64,7 +64,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
 
     const mapInstance = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: 'mapbox://styles/eosarchive/cm15n90zl01lz01qyc4yxg09u',
       center: defaultCenter,
       zoom: defaultZoom,
     });
