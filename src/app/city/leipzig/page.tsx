@@ -9,7 +9,7 @@ import EventList from '@/app/components/EventList';
 
 const LeipzigPage: React.FC = () => {
   // Replace with your actual are.na channel ID for Leipzig.
-  const leipzigChannelId = 'YOUR_LEIPZIG_CHANNEL_ID';
+  const leipzigChannelId = 'leipzig-lhwaeiwmmrw';
   const leipzigCenter: [number, number] = [12.3731, 51.3397];
 
   const [events, setEvents] = useState<EventData[]>([]);
